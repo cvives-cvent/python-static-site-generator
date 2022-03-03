@@ -2,8 +2,8 @@ from typing import List
 from pathlib import Path
 import shutil
 class Parser:
-    def __init__(self):
-        self.extensions: List[str] = []
+    extensions: List[str] = []
+
     def valid_extension(self,extension):
         return extension in self.extensions
     def parse(self,path:Path,source:Path,dest:Path):
@@ -15,8 +15,8 @@ class Parser:
 
     def write(self,path,dest,content,ext=".html"):
         full_path = dest / path.with_suffix(ext).name
-        with open(full_path,"w") as f:
-            f.write(content)
+        with open(full_path,"w") as file:
+            file.write(content)
 
     def copy(self,path, source:Path, dest):
         shutil.copy2(path,dest/path.relative_to(source))
